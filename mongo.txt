@@ -1,0 +1,89 @@
+C:\Users\Admin>mongosh
+Current Mongosh Log ID: 69c0a2d08d8add641b114029
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.1
+MongoNetworkError: connect ECONNREFUSED 127.0.0.1:27017
+
+C:\Users\Admin>mongosh "mongodb+srv://cluster0.hvt4xev.mongodb.net/" --apiVersion 1 --username alina
+Enter password: ***********
+Current Mongosh Log ID: 69c0a2e864b4cad573114029
+Connecting to:          mongodb+srv://<credentials>@cluster0.hvt4xev.mongodb.net/?appName=mongosh+2.8.1
+Using MongoDB:          8.0.20 (API Version 1)
+Using Mongosh:          2.8.1
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+Atlas atlas-26zpw3-shard-0 [primary] test> use collegedb
+switched to db collegedb
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.insertMany([{name: "Ram", age: 19}, {name: "Sita", age: 21},{name: "Gita", age: 22}, {name: "Shyam", age: 18}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('69c0a37564b4cad57311402a'),
+    '1': ObjectId('69c0a37564b4cad57311402b'),
+    '2': ObjectId('69c0a37564b4cad57311402c'),
+    '3': ObjectId('69c0a37564b4cad57311402d')
+  }
+}
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.insertMany([{name: "Ram", age: 19}, {name: "Sita", age: 21},Atlas atlas-26zpw3-shard-0 [primary] collegedb> show db
+MongoshInvalidInputError: [COMMON-10001] 'db' is not a valid argument for "show".
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> show dbs
+collegedb      40.00 KiB
+sample_mflix  175.75 MiB
+admin         356.00 KiB
+local           5.44 GiB
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.tudent.find().pretty()
+
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.student.find().pretty()
+
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.find().pretty()
+[
+  { _id: ObjectId('69c0a37564b4cad57311402a'), name: 'Ram', age: 19 },
+  { _id: ObjectId('69c0a37564b4cad57311402b'), name: 'Sita', age: 21 },
+  { _id: ObjectId('69c0a37564b4cad57311402c'), name: 'Gita', age: 22 },
+  { _id: ObjectId('69c0a37564b4cad57311402d'), name: 'Shyam', age: 18 }
+]
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.find({age: {$gt: 18}})
+[
+  { _id: ObjectId('69c0a37564b4cad57311402a'), name: 'Ram', age: 19 },
+  { _id: ObjectId('69c0a37564b4cad57311402b'), name: 'Sita', age: 21 },
+  { _id: ObjectId('69c0a37564b4cad57311402c'), name: 'Gita', age: 22 }
+]
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.find({Grade: "A"}).pretty()
+
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.find({name: "Ram"}).pretty()
+[ { _id: ObjectId('69c0a37564b4cad57311402a'), name: 'Ram', age: 19 } ]
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.updateOne({name: "Shyam"}, {$set: {grade: "B"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.insertMany([{name: "Ram", age: 19}, {name: "Sita", age: 21},Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.students.updateOne({name: "Ram"), {$set: {grade: "A"}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:34)
+
+> 1 | db.students.updateOne({name: "Ram"), {$set: {grade: "A"}})
+    |                                   ^
+  2 |
+
+Atlas atlas-26zpw3-shard-0 [primary] collegedb>  db.students.updateOne({name: "Ram"), {$set: {grade: "A"}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:35)
+
+> 1 |  db.students.updateOne({name: "Ram"), {$set: {grade: "A"}})
+    |                                    ^
+  2 |
+
+Atlas atlas-26zpw3-shard-0 [primary] collegedb>  db.students.updateOne({name: "Ram"}, {$set: {grade: "A"}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-26zpw3-shard-0 [primary] collegedb>  db.students.deleteOne({name: "Ram"})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-26zpw3-shard-0 [primary] collegedb> db.st
